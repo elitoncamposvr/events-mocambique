@@ -39,18 +39,30 @@
         <div class="ml-64 mx-auto sm:px-4 lg:px-4">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="w-full flex py-1.5">
-                        <div class="w-1/5 font-semibold">Nome do Evento</div>
-                        <div class="w-4/5">{{ $event->event_name }}</div>
+                    <div class="w-full flex">
+                        <div class="w-2/5">
+                            @if($event->event_image)
+                                <img src="{{ url("storage/{$event->event_image}") }}" alt="Imagem do evento {{ $event->event_name }}" class="object-cover w-72 rounded-md">
+                            @else
+                                <img src="{{ url("storage/events/img-default.jpg") }}" alt="Imagem do evento {{ $event->event_name }}" class="object-cover w-72 rounded-md">
+                            @endif
+                        </div>
+                        <div class="w-3/5">
+                            <div class="w-full flex py-1.5">
+                                <div class="w-2/6 font-semibold">Nome do Evento</div>
+                                <div class="w-4/6">{{ $event->event_name }}</div>
+                            </div>
+                            <div class="w-full flex py-1.5">
+                                <div class="w-2/6 font-semibold">Data do Evento</div>
+                                <div class="w-4/6">{{ date('d/m/Y', strtotime($event->event_date)) }}</div>
+                            </div>
+                            <div class="w-full flex py-1.5">
+                                <div class="w-2/6 font-semibold">Descrição do Evento</div>
+                                <div class="w-4/6">{{ $event->description }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-full flex py-1.5">
-                        <div class="w-1/5 font-semibold">Data do Evento</div>
-                        <div class="w-4/5">{{ date('d/m/Y', strtotime($event->event_date)) }}</div>
-                    </div>
-                    <div class="w-full flex py-1.5">
-                        <div class="w-1/5 font-semibold">Descrição do Evento</div>
-                        <div class="w-4/5">{{ $event->description }}</div>
-                    </div>
+
                     <div class="w-full py-1.5 text-center">
                         <form action="{{ route('events.destroy', ['event' => $event->id]) }}" method="post">
                             @csrf

@@ -53,13 +53,21 @@
                         <a class="btn-link" href="{{ route('events.create') }}">Criar novo evento</a>
                     </div>
                     <div class="w-full flex text-sm font-semibold py-2">
-                        <div class="w-3/6">Nome do evento</div>
+                        <div class="w-1/6">Imagem do Evento</div>
+                        <div class="w-2/6">Nome do evento</div>
                         <div class="w-1/6 text-center">Data</div>
                         <div class="w-1/6 text-center">Status</div>
                     </div>
                     @foreach($events as $event)
-                        <div class="w-full flex bg-slate-100 rounded-md px-1.5 py-2 mb-1.5">
-                            <div class="w-3/6">
+                        <div class="w-full flex items-center bg-slate-100 rounded-md px-1.5 py-2 mb-1.5">
+                            <div class="w-1/6">
+                                @if($event->event_image)
+                                    <img src="{{ url("storage/{$event->event_image}") }}" alt="Imagem do evento {{ $event->event_name }}" class="object-cover w-20 rounded-md">
+                                @else
+                                    <img src="{{ url("storage/events/img-default.jpg") }}" alt="Imagem do evento {{ $event->event_name }}" class="object-cover w-20 rounded-md">
+                                @endif
+                            </div>
+                            <div class="w-2/6">
                                 {{ $event->event_name }}
                             </div>
                             <div class="w-1/6 text-center">

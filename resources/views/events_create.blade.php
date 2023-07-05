@@ -39,7 +39,17 @@
         <div class="ml-64 mx-auto sm:px-4 lg:px-4">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('events.store') }}" method="post">
+                    @if(session()->has('success'))
+                        <div class="msg-success mb-2">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if($errors->any())
+                        <div class="msg-error mb-2">
+                            @foreach($errors->all() as $error)      {{ $error }} @endforeach
+                        </div>
+                    @endif
+                    <form action="{{ route('events.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="w-full py-2">
                             <label class="label-input" for="event_name">Nome do Evento</label>
@@ -48,6 +58,10 @@
                         <div class="w-full py-2">
                             <label class="label-input" for="event_date">Data do Evento</label>
                             <input class="w-full input" type="date" name="event_date" id="event_date">
+                        </div>
+                        <div class="w-full py-2">
+                            <label class="label-input" for="event_image">Imagem de Divulgação do Evento</label>
+                            <input class="w-full input" type="file" name="event_image" id="event_image">
                         </div>
                         <div class="w-full py-2">
                             <label class="label-input" for="description">Descrição do Evento</label>

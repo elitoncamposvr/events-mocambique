@@ -39,7 +39,7 @@
         <div class="ml-64 mx-auto sm:px-4 lg:px-4">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('events.update', ['event' => $event->id]) }}" method="post">
+                    <form action="{{ route('events.update', ['event' => $event->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_method" value="PUT">
                         <div class="w-full py-2">
@@ -47,6 +47,10 @@
                         </div>
                         <div class="w-full py-2">
                             <input class="w-full input" type="date" name="event_date" id="event_date" value="{{ $event->event_date }}">
+                        </div>
+                        <div class="w-full py-2">
+                            <label class="label-input" for="event_image">Imagem de Divulgação do Evento</label>
+                            <input class="w-full input" type="file" name="event_image" id="event_image">
                         </div>
                         <div class="w-full py-2">
                             <textarea class="w-full input resize-none" name="description" id="description" rows="5">{{ $event->description }}</textarea>
