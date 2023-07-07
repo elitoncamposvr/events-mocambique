@@ -21,6 +21,13 @@ class EventController extends Controller
             'events' => DB::table('events')->paginate(15)
         ]);
     }
+    
+    public function eventsall()
+    {
+        return view('events_all', [
+            'events' => DB::table('events')->paginate(15)
+        ]);
+    }
 
     public function create()
     {

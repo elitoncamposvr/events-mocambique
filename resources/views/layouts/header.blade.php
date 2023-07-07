@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-livewire-layout>
     <x-slot name="header">
         <div class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -34,4 +34,4 @@
             </x-slot>
         </x-dropdown>
     </x-slot>
-</x-app-layout>
+</x-livewire-layout>

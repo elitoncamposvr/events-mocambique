@@ -9,6 +9,10 @@
         @apply bg-slate-800 text-white rounded-md px-4 py-2 text-sm;
     }
 
+    .btn-link--hover{
+        @apply bg-slate-500;
+    }
+
     .btn-link--danger{
         @apply bg-red-500 text-white rounded-md px-4 py-2 text-sm;
     }

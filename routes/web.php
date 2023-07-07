@@ -4,6 +4,9 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\ShowEvents;
+use App\Http\Livewire\ShowTickets;
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');
@@ -32,13 +35,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets');
-    Route::get('/tickets/{ticket}/show', [TicketController::class, 'show'])->name('tickets.show');
-    Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
-    Route::post('tickets/store', [TicketController::class, 'store'])->name('tickets.store');
-    Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
-    Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
-    Route::delete('/tickets/{ticket}', [TicketController::class, 'delete'])->name('tickets.destroy');
+    Route::get('/eventsall', [EventController::class, 'eventsall'])->name('events.all');
+    Route::get('/tickets/{event}', ShowTickets::class)->name('tickets');
+
+//    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets');
+//    Route::get('/tickets/{ticket}/show', [TicketController::class, 'show'])->name('tickets.show');
+//    Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
+//    Route::post('tickets/store', [TicketController::class, 'store'])->name('tickets.store');
+//    Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
+//    Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
+//    Route::delete('/tickets/{ticket}', [TicketController::class, 'delete'])->name('tickets.destroy');
 });
 
 require __DIR__.'/auth.php';

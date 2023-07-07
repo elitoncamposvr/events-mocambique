@@ -19,7 +19,7 @@
         </a>
     </div>
     <div class="ml-4">
-        <a href="{{ route('tickets') }}">
+        <a href="{{ route('events.all') }}">
             <div class="w-full p-3 rounded-l-md flex items-center text-slate-600 hover:bg-slate-200">
                 <i class="fa-solid fa-ticket fa-lg w-8"></i>
                 Bilhetes
